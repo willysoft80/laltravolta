@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Dati strutturati per Google (scheda struttura ricettiva) -->
 <script type="application/ld+json">
@@ -139,9 +139,22 @@
   @keyframes aiUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
   #av-intro.av-intro-out{opacity:0;transform:scale(1.06);transition:opacity .9s ease,transform 1.1s cubic-bezier(.4,0,.2,1)}
   @media(prefers-reduced-motion:reduce){#av-intro .ai-vault,#av-intro .ai-word,#av-intro .ai-sub,#av-intro .ai-div{animation:none!important;opacity:1!important}}
+  /* === Audit quick-win: contrasto AA, focus, accessibilita' === */
+  [style*="color:#8a7a3f" i]{color:#6E6132!important}
+  [style*="background:#8a7a3f" i]{background:#6E6132!important}
+  [style*="color:#8a8268" i]{color:#6b6347!important}
+  [style*="color:#6e6552" i]{color:#645c47!important}
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid #6E6132;outline-offset:3px;border-radius:2px}
+  .av-skip{position:absolute;left:8px;top:-64px;z-index:100001;background:#2A2417;color:#F5EEE0;padding:10px 16px;border-radius:2px;text-decoration:none;transition:top .2s ease}
+  .av-skip:focus{top:8px}
+  .av-langbtn{appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;padding:8px 6px;font:inherit;letter-spacing:.10em;line-height:1;cursor:pointer;display:inline-flex;align-items:center;min-height:40px}
+  .av-faq-q{appearance:none;-webkit-appearance:none;background:none;border:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;cursor:pointer;text-align:left;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;color:#2A2417}
+  .av-faq-plus{font-size:22px;color:#6E6132;line-height:1;transition:transform .3s ease}
 </style>
+<noscript><style>#av-intro{display:none!important}</style></noscript>
 </head>
 <body>
+<a class="av-skip" href="#main">Salta al contenuto</a>
 
 <div id="av-intro" role="presentation" aria-label="L'altra Volta — Casa Vacanza">
   <div class="aii">
@@ -169,7 +182,7 @@
 <div style="width:100%;font-family:Jost,sans-serif;color:#2A2417;background:#F5EEE0;overflow-x:clip">
 
   <!-- NAV -->
-  <div class="av-nav av-pad" style="position:sticky;top:0;z-index:50;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(245,238,224,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(42,36,23,.10)">
+  <nav class="av-nav av-pad" aria-label="Navigazione principale" style="position:sticky;top:0;z-index:50;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(245,238,224,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(42,36,23,.10)">
     <a href="#top" style="display:flex;align-items:center;gap:13px">
       <span style="width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid rgba(138,122,63,.30);display:flex;align-items:center;justify-content:center">
         <img src="assets/logo-art.png" alt="L'altra Volta" style="width:30px;height:30px;object-fit:contain">
@@ -181,15 +194,16 @@
     </div>
     <div style="display:flex;align-items:center;gap:20px">
       <div class="av-lang" style="display:flex;align-items:center;gap:7px;font-size:12px;letter-spacing:.10em">
-        <span role="button" id="lang-it" onclick="AV.setLang('it')">IT</span>
-        <span style="opacity:.4">/</span>
-        <span role="button" id="lang-en" onclick="AV.setLang('en')">EN</span>
+        <button type="button" class="av-langbtn" id="lang-it" onclick="AV.setLang('it')" aria-label="Italiano" aria-pressed="true">IT</button>
+        <span aria-hidden="true" style="opacity:.4">/</span>
+        <button type="button" class="av-langbtn" id="lang-en" onclick="AV.setLang('en')" aria-label="English" aria-pressed="false">EN</button>
       </div>
       <a href="https://wa.me/393280522050" target="_blank" rel="noopener" class="av-cta" data-i18n="book" style="text-decoration:none;background:#8A7A3F;color:#F5EEE0;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;border-radius:1px"></a>
     </div>
-  </div>
+  </nav>
 
   <span id="top"></span>
+  <main id="main" tabindex="-1">
 
   <!-- HERO -->
   <div class="av-hero" style="display:flex;min-height:calc(100vh - 80px)">
@@ -310,8 +324,10 @@
     <div id="faqs" style="border-top:1px solid rgba(42,36,23,.14)"></div>
   </div>
 
+  </main>
+
   <!-- PRENOTA / FOOTER -->
-  <div id="contatti" class="av-sec av-pad" style="position:relative;background:#2A2417;color:#F5EEE0;padding:84px 64px 0;overflow:hidden">
+  <footer id="contatti" class="av-sec av-pad" role="contentinfo" style="position:relative;background:#2A2417;color:#F5EEE0;padding:84px 64px 0;overflow:hidden">
     <img src="assets/logo-art-light.png" alt="" aria-hidden="true" style="position:absolute;right:30px;top:-30px;width:260px;opacity:.10;pointer-events:none">
     <div style="position:relative;text-align:center">
       <div data-i18n="navContact" style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c8b985;margin-bottom:16px"></div>
@@ -328,7 +344,7 @@
       <span data-i18n="addr" style="text-align:center"></span>
       <span style="justify-self:end;text-align:right">&copy; L'altra Volta &middot; <span data-i18n="rights"></span></span>
     </div>
-  </div>
+  </footer>
 
 </div>
 
@@ -358,7 +374,8 @@ const AV = (function () {
       bookTitle:'Prenota il tuo soggiorno.', bookSub:'Scrivici su WhatsApp o chiamaci: ti rispondiamo in poco tempo.',
       addr:'San Pietro Vernotico (BR) · Puglia',
       reachWa:'Scrivi su WhatsApp', reachCall:'Chiama',
-      rights:'Tutti i diritti riservati'
+      rights:'Tutti i diritti riservati',
+      waText:'Ciao! Vorrei informazioni su L\'altra Volta (disponibilità e prezzi).'
     },
     en: {
       navHome:'The home', navVolta:'The Vault', navGallery:'Gallery', navAround:'Surroundings', navContact:'Contact',
@@ -380,7 +397,8 @@ const AV = (function () {
       bookTitle:'Book your stay.', bookSub:'Message us on WhatsApp or give us a call — we reply quickly.',
       addr:'San Pietro Vernotico (BR) · Apulia',
       reachWa:'Message on WhatsApp', reachCall:'Call',
-      rights:'All rights reserved'
+      rights:'All rights reserved',
+      waText:'Hi! I\'d like info about L\'altra Volta (availability and rates).'
     }
   };
 
@@ -433,7 +451,7 @@ const AV = (function () {
     ]
   };
 
-  const ACCENT = '#8A7A3F', SOFT = '#9a9079';
+  const ACCENT = '#6E6132', SOFT = '#857c63';
   let lang = 'it';
   let openFaq = 0;
 
@@ -446,8 +464,13 @@ const AV = (function () {
       if (t[k] != null) el.textContent = t[k];
     });
     document.documentElement.lang = lang;
-    document.getElementById('lang-it').style.color = (lang === 'en') ? SOFT : ACCENT;
-    document.getElementById('lang-en').style.color = (lang === 'en') ? ACCENT : SOFT;
+    const itB = document.getElementById('lang-it'), enB = document.getElementById('lang-en');
+    itB.style.color = (lang === 'en') ? SOFT : ACCENT; enB.style.color = (lang === 'en') ? ACCENT : SOFT;
+    itB.setAttribute('aria-pressed', lang === 'it'); enB.setAttribute('aria-pressed', lang === 'en');
+    if (t.waText) {
+      const wa = 'https://wa.me/393280522050?text=' + encodeURIComponent(t.waText);
+      document.querySelectorAll('a[href^="https://wa.me/393280522050"]').forEach(a => { a.href = wa; });
+    }
   }
 
   function renderDistances() {
@@ -472,21 +495,23 @@ const AV = (function () {
     document.getElementById('faqs').innerHTML = FAQS[lang].map((f, i) => {
       const open = openFaq === i;
       return `
-      <div class="av-faq" data-i="${i}" style="border-bottom:1px solid rgba(42,36,23,.14);padding:24px 4px;cursor:pointer">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:20px">
-          <span style="font-size:18px;font-family:'Cormorant Garamond',serif;font-weight:500;color:#2A2417">${esc(f.q)}</span>
-          <span style="font-size:22px;color:#8A7A3F;line-height:1;transition:transform .3s ease;transform:rotate(${open ? '45deg' : '0deg'})">+</span>
-        </div>
-        <div style="max-height:${open ? '260px' : '0'};overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .3s ease;opacity:${open ? 1 : 0};margin-top:${open ? '14px' : '0'}">
-          <p style="margin:0;max-width:640px;font-size:15.5px;line-height:1.72;color:#6E6552;font-weight:300">${esc(f.a)}</p>
+      <div class="av-faq" style="border-bottom:1px solid rgba(42,36,23,.14)">
+        <button class="av-faq-q" type="button" data-i="${i}" aria-expanded="${open}" aria-controls="faq-a-${i}">
+          <span>${esc(f.q)}</span>
+          <span class="av-faq-plus" aria-hidden="true" style="transform:rotate(${open ? '45deg' : '0deg'})">+</span>
+        </button>
+        <div id="faq-a-${i}" role="region" style="max-height:${open ? '320px' : '0'};overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:${open ? 1 : 0}">
+          <p style="margin:0 4px ${open ? '22px' : '0'};max-width:640px;font-size:15.5px;line-height:1.72;color:#645c47;font-weight:300">${esc(f.a)}</p>
         </div>
       </div>`;
     }).join('');
-    document.querySelectorAll('#faqs .av-faq').forEach(el => {
-      el.addEventListener('click', () => {
-        const i = parseInt(el.getAttribute('data-i'), 10);
+    document.querySelectorAll('#faqs .av-faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.getAttribute('data-i'), 10);
         openFaq = (openFaq === i) ? -1 : i;
         renderFaqs();
+        const nb = document.querySelector('#faqs .av-faq-q[data-i="' + i + '"]');
+        if (nb) nb.focus();
       });
     });
   }
@@ -616,7 +641,7 @@ const AV = (function () {
     setTimeout(()=>{
       img.onload=null; img.src=items[idx].src; img.alt=items[idx].alt||'';
       const show=()=>{ void img.offsetWidth; img.style.opacity='1'; kbStart(); };
-      if(img.complete && img.naturalWidth) show(); else { img.onload=()=>{ img.onload=null; show(); }; }
+      if(img.complete && img.naturalWidth) show(); else { img.onload=()=>{ img.onload=null; show(); }; img.onerror=()=>{ img.onerror=null; show(); }; }
     },150);
   }
   function nav(dir){ if(!isOpen) return; idx=(idx+dir+items.length)%items.length; updateMeta(); crossfade(); }
