@@ -1,6 +1,6 @@
-# L'Altra Volta — Casa vacanze (San Pietro Vernotico, Salento)
+# L'altra Volta — Casa vacanze (San Pietro Vernotico, Salento)
 
-Sito web statico della casa vacanze **L'Altra Volta**, a San Pietro Vernotico (BR), Puglia.
+Sito web statico della casa vacanze **L'altra Volta**, a San Pietro Vernotico (BR), Puglia.
 Singola pagina, **bilingue 🇮🇹 / 🇬🇧**, senza framework né build: solo HTML, CSS e un piccolo JavaScript. Si pubblica gratis su GitHub Pages, Cloudflare Pages o qualsiasi hosting statico.
 
 ## Struttura
