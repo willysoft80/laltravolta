@@ -90,10 +90,81 @@
     .av-h1{font-size:42px!important}
     .av-foot-bar{grid-template-columns:1fr!important;justify-items:center!important;gap:10px!important}
     .av-foot-bar>*{justify-self:center!important;text-align:center!important}
+    /* --- fix mobile --- */
+    .av-nav a img[src*="logo-word"]{height:22px!important}
+    .av-nav a>span{width:40px!important;height:40px!important}
+    .av-nav a>span img{width:26px!important;height:26px!important}
+    .av-nav a.av-cta{padding:10px 14px!important;font-size:11.5px!important;letter-spacing:.07em!important}
+    .av-nav>div:last-child{gap:12px!important}
+    .av-nav>a[href="#top"]{gap:9px!important}
+    .av-grid3 .av-amen{border-right:0!important;border-bottom:1px solid rgba(42,36,23,.12)!important}
+    .av-grid3 .av-amen:last-child{border-bottom:0!important}
+    .av-sec h2{font-size:clamp(27px,7.4vw,33px)!important;line-height:1.12!important}
+    .av-hero>div:nth-child(2){min-height:290px!important}
+    .av-split>div:has(>img[src*="photos"]){min-height:300px!important}
+    #casa,#galleria,#dintorni{padding-top:54px!important;padding-bottom:58px!important}
+    .av-hero .av-pad{padding-top:40px!important;padding-bottom:46px!important}
   }
+  /* top bar che si minimizza allo scroll */
+  .av-nav{transition:height .28s ease,padding .28s ease,background-color .28s ease,box-shadow .28s ease}
+  .av-nav a>span,.av-nav a img{transition:width .28s ease,height .28s ease}
+  .av-nav.is-min{height:58px!important;background:rgba(245,238,224,.97)!important;box-shadow:0 3px 16px rgba(42,36,23,.10)}
+  .av-nav.is-min a>span{width:38px!important;height:38px!important}
+  .av-nav.is-min a>span img{width:24px!important;height:24px!important}
+  .av-nav.is-min a img[src*="logo-word"]{height:23px!important}
+  .av-nav.is-min a.av-cta{padding:10px 18px!important}
+  @media(max-width:880px){
+    .av-nav.is-min{height:54px!important}
+    .av-nav.is-min a>span{width:34px!important;height:34px!important}
+    .av-nav.is-min a>span img{width:22px!important;height:22px!important}
+    .av-nav.is-min a img[src*="logo-word"]{height:19px!important}
+    .av-nav.is-min a.av-cta{padding:9px 14px!important}
+  }
+  @media(prefers-reduced-motion:reduce){.av-nav,.av-nav a>span,.av-nav a img{transition:none!important}}
+  /* Schermata di benvenuto (intro cinematografica) */
+  #av-intro{position:fixed;inset:0;z-index:100000;background:#A28342;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
+  #av-intro .aii{display:flex;flex-direction:column;align-items:center;transform:translateY(-2%)}
+  #av-intro .ai-vault{width:clamp(150px,34vw,232px);height:auto;opacity:0}
+  #av-intro .ai-word{width:clamp(230px,60vw,430px);height:auto;margin-top:20px;opacity:0}
+  #av-intro .ai-sub{margin-top:16px;color:#F3EAD6;font-family:Jost,sans-serif;font-weight:300;letter-spacing:.42em;text-indent:.42em;font-size:clamp(11px,2.3vw,16px);opacity:0}
+  #av-intro .ai-div{margin-top:22px;display:flex;align-items:center;gap:12px;opacity:0;color:#F5EEE0}
+  #av-intro .ai-div span{display:block;width:clamp(40px,9vw,70px);height:1px;background:rgba(245,238,224,.55)}
+  #av-intro .ai-div b{font-weight:400;font-size:14px;line-height:0}
+  #av-intro .ai-div i{font-style:normal;font-size:6px;opacity:.75}
+  .av-intro-go .ai-vault{animation:aiIn .8s cubic-bezier(.2,.8,.2,1) .15s forwards}
+  .av-intro-go .ai-word{animation:aiUp .9s cubic-bezier(.2,.8,.2,1) .9s forwards}
+  .av-intro-go .ai-sub{animation:aiIn .7s ease 1.6s forwards}
+  .av-intro-go .ai-div{animation:aiIn .7s ease 1.9s forwards}
+  @keyframes aiIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+  @keyframes aiUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  #av-intro.av-intro-out{opacity:0;transform:scale(1.06);transition:opacity .9s ease,transform 1.1s cubic-bezier(.4,0,.2,1)}
+  @media(prefers-reduced-motion:reduce){#av-intro .ai-vault,#av-intro .ai-word,#av-intro .ai-sub,#av-intro .ai-div{animation:none!important;opacity:1!important}}
 </style>
 </head>
 <body>
+
+<div id="av-intro" role="presentation" aria-label="L'altra Volta — Casa Vacanza">
+  <div class="aii">
+    <img class="ai-vault" src="assets/vault.png" alt="" aria-hidden="true">
+    <img class="ai-word" src="assets/logo-word-light.svg" alt="L'altra Volta">
+    <div class="ai-sub">CASA VACANZA</div>
+    <div class="ai-div"><span></span><i>&bull;</i><b>&#10022;</b><i>&bull;</i><span></span></div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('av-intro'); if(!el) return;
+  var seen=false; try{ seen=sessionStorage.getItem('av-intro')==='1'; }catch(e){}
+  if(seen){ if(el.parentNode) el.parentNode.removeChild(el); return; }
+  try{ sessionStorage.setItem('av-intro','1'); }catch(e){}
+  var de=document.documentElement; de.style.overflow='hidden';
+  var done=false;
+  function finish(){ if(done) return; done=true; el.classList.add('av-intro-out'); setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); de.style.overflow=''; }, 1150); }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.addEventListener('click', finish);
+  if(reduce){ setTimeout(finish, 1100); } else { el.classList.add('av-intro-go'); setTimeout(finish, 2900); }
+})();
+</script>
 
 <div style="width:100%;font-family:Jost,sans-serif;color:#2A2417;background:#F5EEE0;overflow-x:hidden">
 
@@ -612,6 +683,15 @@ const AV = (function () {
     });
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', bind); else bind();
+})();
+
+/* Top bar sticky che si minimizza allo scroll */
+(function(){
+  var nav=document.querySelector('.av-nav'); if(!nav) return;
+  var min=false;
+  function upd(){ var s=(window.scrollY||document.documentElement.scrollTop) > 50; if(s!==min){ min=s; nav.classList.toggle('is-min', s); } }
+  window.addEventListener('scroll', upd, {passive:true});
+  upd();
 })();
 </script>
 </body>
