@@ -12,7 +12,7 @@ laltravolta/
 ├── robots.txt        ← per i motori di ricerca
 ├── sitemap.xml       ← mappa del sito
 ├── assets/           ← logo nei vari formati
-└── photos/           ← foto della casa (orig-01…orig-11)
+└── photos/           ← foto della casa (orig-01…orig-10)
 ```
 
 ## Anteprima in locale
