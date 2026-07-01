@@ -341,7 +341,7 @@
     <div style="flex:1;min-width:320px">
       <div data-i18n="locLabel" style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#8A7A3F;margin-bottom:16px"></div>
       <h2 data-i18n="locTitle" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:40px;line-height:1.08;color:#2A2417">Tra centro, mare e natura.</h2>
-      <p data-i18n="locIntro" style="margin:20px 0 30px;max-width:430px;font-size:16px;line-height:1.72;color:#6E6552;font-weight:300">In posizione strategica nel cuore del Salento: a pochi passi dal centro di San Pietro Vernotico e a 5 minuti dalla stazione, con negozi, bar e supermercati vicini. In pochi minuti raggiungi le spiagge dell'Adriatico salentino — Campo di Mare e Torre San Gennaro — e in mezz'ora Lecce, capitale del barocco pugliese; a due passi Cellino San Marco con le sue cantine.</p>
+      <p data-i18n="locIntro" style="margin:20px 0 30px;max-width:430px;font-size:16px;line-height:1.72;color:#6E6552;font-weight:300">Una posizione baricentrica nel Salento, con due mari a portata di mano: l'Adriatico a ~13 minuti (Campo di Mare, Torre San Gennaro) e lo Ionio, con le spiagge bianche di Porto Cesareo, a ~35. A pochi minuti Carrisiland e l'aeroporto di Brindisi, e Lecce barocca a un quarto d'ora. La Puglia vera, fuori dalle rotte turistiche ma con tutto vicino.</p>
       <div id="distances"></div>
     </div>
     <div style="width:46%;min-width:320px;align-self:stretch;min-height:380px;border:1px solid rgba(42,36,23,.14);border-radius:2px;overflow:hidden">
@@ -409,7 +409,7 @@ const AV = (function () {
       am1:'Ampio soggiorno con volta a stella', am2:'Cucina completamente attrezzata', am3:'Camera matrimoniale · 3 posti letto', am4:'Lavanderia dedicata', am5:'Bagno e servizio', am6:'Giardino e corte privata',
       galleryLabel:'Galleria', galleryTitle:'Ambienti curati, luce mediterranea.', gallerySub:'Dai uno sguardo agli spazi della casa.',
       locLabel:'Posizione', locTitle:'Tra centro, mare e natura.',
-      locIntro:'In posizione strategica nel cuore del Salento: a pochi passi dal centro di San Pietro Vernotico e a 5 minuti dalla stazione, con negozi, bar e supermercati vicini. In pochi minuti raggiungi le spiagge dell\'Adriatico salentino — Campo di Mare e Torre San Gennaro — e in mezz\'ora Lecce, capitale del barocco pugliese; a due passi Cellino San Marco con le sue cantine.',
+      locIntro:'Una posizione baricentrica nel Salento, con due mari a portata di mano: l\'Adriatico a ~13 minuti (Campo di Mare, Torre San Gennaro) e lo Ionio, con le spiagge bianche di Porto Cesareo, a ~35. A pochi minuti Carrisiland e l\'aeroporto di Brindisi, e Lecce barocca a un quarto d\'ora. La Puglia vera, fuori dalle rotte turistiche ma con tutto vicino.',
       reviewsLabel:'Dicono di noi', reviewsTitle:'Ospiti felici.',
       faqLabel:'Informazioni utili', faqTitle:'Domande frequenti.',
       bookTitle:'Prenota il tuo soggiorno.', bookSub:'Scrivici su WhatsApp o chiamaci: ti rispondiamo in poco tempo.',
@@ -432,7 +432,7 @@ const AV = (function () {
       am1:'Spacious living room with star vault', am2:'Fully-equipped kitchen', am3:'Double bedroom · sleeps 3', am4:'Dedicated laundry', am5:'Bathroom & WC', am6:'Garden & private courtyard',
       galleryLabel:'Gallery', galleryTitle:'Cared-for spaces, Mediterranean light.', gallerySub:'Take a look around the home.',
       locLabel:'Location', locTitle:'Between town, sea and nature.',
-      locIntro:'A strategic location in the heart of Salento: steps from the centre of San Pietro Vernotico and 5 minutes from the station, with shops, cafés and supermarkets nearby. In minutes you reach the Adriatic beaches — Campo di Mare and Torre San Gennaro — and in half an hour Lecce, the baroque capital of Puglia; nearby, Cellino San Marco and its wineries.',
+      locIntro:'A central base in Salento, with two seas within reach: the Adriatic ~13 minutes away (Campo di Mare, Torre San Gennaro) and the Ionian — with the white beaches of Porto Cesareo — at ~35. Minutes from Carrisiland water park and Brindisi airport, and baroque Lecce just a quarter of an hour away. Real Puglia, off the tourist trail yet with everything close.',
       reviewsLabel:'Guest words', reviewsTitle:'Happy guests.',
       faqLabel:'Good to know', faqTitle:'Frequently asked.',
       bookTitle:'Book your stay.', bookSub:'Message us on WhatsApp or give us a call — we reply quickly.',
@@ -445,18 +445,26 @@ const AV = (function () {
 
   const DISTANCES = {
     it: [
-      { place:'Centro del paese', dist:'a pochi passi' },
-      { place:'Stazione ferroviaria', dist:'5 min' },
-      { place:'Carrisiland · Cellino San Marco', dist:'2 km' },
-      { place:'Campo di Mare', dist:'8 km' },
-      { place:'Porto Cesareo', dist:'35 km' }
+      { place:'Mare Adriatico · Campo di Mare / Torre San Gennaro', dist:'~13 min' },
+      { place:'Mare Ionio · Porto Cesareo', dist:'~35 min' },
+      { place:'Carrisiland · parco acquatico', dist:'~5 min' },
+      { place:'Aeroporto di Brindisi', dist:'~25 min' },
+      { place:'Lecce · il barocco', dist:'~20 min' },
+      { place:'Stazione FS · in paese', dist:'a piedi' },
+      { place:'Otranto', dist:'~55 min' },
+      { place:'Gallipoli', dist:'~50 min' },
+      { place:'Ostuni · Città Bianca', dist:'~50 min' }
     ],
     en: [
-      { place:'Town centre', dist:'steps away' },
-      { place:'Railway station', dist:'5 min' },
-      { place:'Carrisiland water park · Cellino S. Marco', dist:'2 km' },
-      { place:'Campo di Mare beach', dist:'8 km' },
-      { place:'Porto Cesareo beach', dist:'35 km' }
+      { place:'Adriatic sea · Campo di Mare / Torre San Gennaro', dist:'~13 min' },
+      { place:'Ionian sea · Porto Cesareo', dist:'~35 min' },
+      { place:'Carrisiland · water park', dist:'~5 min' },
+      { place:'Brindisi airport', dist:'~25 min' },
+      { place:'Lecce · baroque town', dist:'~20 min' },
+      { place:'Railway station · in town', dist:'on foot' },
+      { place:'Otranto', dist:'~55 min' },
+      { place:'Gallipoli', dist:'~50 min' },
+      { place:'Ostuni · the White Town', dist:'~50 min' }
     ]
   };
 
