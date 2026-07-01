@@ -8,6 +8,7 @@
 <meta name="description" content="Casa vacanze L'altra Volta a San Pietro Vernotico (Salento): appartamento con volta a stella in pietra, giardino privato, a 5 minuti dalla stazione e pochi minuti dal mare. Prenota su WhatsApp.">
 <meta name="theme-color" content="#8A7A3F">
 <link rel="canonical" href="https://laltravolta.it/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
 <!-- Social preview (WhatsApp / Facebook) -->
 <meta property="og:type" content="website">
@@ -38,13 +39,23 @@
 {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
+  "@id": "https://laltravolta.it/#lodging",
   "name": "L'altra Volta",
-  "description": "Casa vacanze con volta a stella in pietra a San Pietro Vernotico, nel cuore del Salento.",
-  "image": "https://laltravolta.it/photos/orig-02.jpeg",
+  "description": "Casa vacanze con volta a stella in pietra a San Pietro Vernotico, nel cuore del Salento: 3 posti letto, giardino privato, a 5 minuti dalla stazione e pochi minuti dal mare.",
+  "image": [
+    "https://laltravolta.it/assets/og-cover.jpg",
+    "https://laltravolta.it/photos/orig-02.jpeg",
+    "https://laltravolta.it/photos/orig-03.jpeg"
+  ],
   "url": "https://laltravolta.it/",
   "telephone": "+39 328 052 2050",
   "email": "prenotazioni@laltravolta.it",
   "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "inLanguage": "it",
+  "petsAllowed": false,
+  "checkinTime": "15:00:00",
+  "checkoutTime": "10:30:00",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via Palma 22",
@@ -53,11 +64,34 @@
     "postalCode": "72027",
     "addressCountry": "IT"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.4917,
+    "longitude": 18.0086
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Via%20Palma%2022%2C%20San%20Pietro%20Vernotico%2C%20BR",
   "areaServed": "Salento, Puglia",
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuito", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Giardino privato", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Parcheggio nelle vicinanze", "value": true }
+  ]
+}
+</script>
+<!-- Dati strutturati FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "it",
+  "mainEntity": [
+    { "@type": "Question", "name": "Orari di check-in e check-out?", "acceptedAnswer": { "@type": "Answer", "text": "Check-in dalle 15:00, check-out entro le 10:30. Orari flessibili su richiesta: basta segnalarcelo." } },
+    { "@type": "Question", "name": "Sono ammessi gli animali?", "acceptedAnswer": { "@type": "Answer", "text": "Ci dispiace, ma la casa non accetta animali domestici." } },
+    { "@type": "Question", "name": "Quanti ospiti può ospitare?", "acceptedAnswer": { "@type": "Answer", "text": "La casa dispone di 3 posti letto, con camera matrimoniale e un letto aggiuntivo." } },
+    { "@type": "Question", "name": "C’è parcheggio e Wi-Fi?", "acceptedAnswer": { "@type": "Answer", "text": "Parcheggio libero nelle vicinanze, in centro paese, e connessione Wi-Fi gratuita in tutta la casa." } },
+    { "@type": "Question", "name": "Come si arriva?", "acceptedAnswer": { "@type": "Answer", "text": "A soli 5 minuti dalla stazione di San Pietro Vernotico e comoda anche in auto. Inviamo indicazioni dettagliate dopo la prenotazione." } },
+    { "@type": "Question", "name": "Come posso prenotare?", "acceptedAnswer": { "@type": "Answer", "text": "Il modo più rapido è WhatsApp o una telefonata. Confermiamo subito disponibilità e date." } }
   ]
 }
 </script>
