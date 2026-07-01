@@ -13,3 +13,6 @@ Desktop.ini
 *.tmp
 *.log
 *~
+
+# cartella di lavoro asset per Google Business (non deployata)
+google-business/
