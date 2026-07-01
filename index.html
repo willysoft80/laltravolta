@@ -77,6 +77,7 @@
     { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuito", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Giardino privato", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Parcheggio nelle vicinanze", "value": true }
   ]
 }
@@ -91,7 +92,9 @@
     { "@type": "Question", "name": "Orari di check-in e check-out?", "acceptedAnswer": { "@type": "Answer", "text": "Check-in dalle 15:00, check-out entro le 10:30. Orari flessibili su richiesta: basta segnalarcelo." } },
     { "@type": "Question", "name": "Sono ammessi gli animali?", "acceptedAnswer": { "@type": "Answer", "text": "Ci dispiace, ma la casa non accetta animali domestici." } },
     { "@type": "Question", "name": "Quanti ospiti può ospitare?", "acceptedAnswer": { "@type": "Answer", "text": "La casa dispone di 3 posti letto, con camera matrimoniale e un letto aggiuntivo." } },
-    { "@type": "Question", "name": "C’è parcheggio e Wi-Fi?", "acceptedAnswer": { "@type": "Answer", "text": "Parcheggio libero nelle vicinanze, in centro paese, e connessione Wi-Fi gratuita in tutta la casa." } },
+    { "@type": "Question", "name": "Quanto dista il mare?", "acceptedAnswer": { "@type": "Answer", "text": "L'Adriatico (Campo di Mare, Torre San Gennaro) è a circa 13 minuti in auto; le spiagge bianche dello Ionio (Porto Cesareo) a circa 35 minuti." } },
+    { "@type": "Question", "name": "Quanto dista Carrisiland, il parco acquatico?", "acceptedAnswer": { "@type": "Answer", "text": "Carrisiland, il parco acquatico e a tema di Cellino San Marco, è a soli 5 minuti in auto: siamo tra gli alloggi più vicini, ideale per una giornata al parco con i bambini." } },
+    { "@type": "Question", "name": "C’è aria condizionata, Wi-Fi e parcheggio?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: aria condizionata, Wi-Fi gratuito in tutta la casa e parcheggio libero nelle vicinanze, in centro paese." } },
     { "@type": "Question", "name": "Come si arriva?", "acceptedAnswer": { "@type": "Answer", "text": "A soli 5 minuti dalla stazione di San Pietro Vernotico e comoda anche in auto. Inviamo indicazioni dettagliate dopo la prenotazione." } },
     { "@type": "Question", "name": "Come posso prenotare?", "acceptedAnswer": { "@type": "Answer", "text": "Il modo più rapido è WhatsApp o una telefonata. Confermiamo subito disponibilità e date." } }
   ]
@@ -487,7 +490,9 @@ const AV = (function () {
       { q:'Orari di check-in e check-out?', a:'Check-in dalle 15:00, check-out entro le 10:30. Orari flessibili su richiesta: basta segnalarcelo.' },
       { q:'Sono ammessi gli animali?', a:'Ci dispiace, ma la casa non accetta animali domestici.' },
       { q:'Quanti ospiti può ospitare?', a:'La casa dispone di 3 posti letto, con camera matrimoniale e un letto aggiuntivo.' },
-      { q:'C’è parcheggio e Wi-Fi?', a:'Parcheggio libero nelle vicinanze, in centro paese, e connessione Wi-Fi gratuita in tutta la casa.' },
+      { q:'Quanto dista il mare?', a:'L\'Adriatico (Campo di Mare, Torre San Gennaro) è a circa 13 minuti in auto; le spiagge bianche dello Ionio (Porto Cesareo) a circa 35 minuti.' },
+      { q:'Quanto dista Carrisiland, il parco acquatico?', a:'Carrisiland, il parco acquatico e a tema di Cellino San Marco, è a soli 5 minuti in auto: siamo tra gli alloggi più vicini, ideale per una giornata al parco con i bambini.' },
+      { q:'C’è aria condizionata, Wi-Fi e parcheggio?', a:'Sì: aria condizionata, Wi-Fi gratuito in tutta la casa e parcheggio libero nelle vicinanze, in centro paese.' },
       { q:'Come si arriva?', a:'A soli 5 minuti dalla stazione di San Pietro Vernotico e comoda anche in auto. Inviamo indicazioni dettagliate dopo la prenotazione.' },
       { q:'Come posso prenotare?', a:'Il modo più rapido è WhatsApp o una telefonata. Confermiamo subito disponibilità e date.' }
     ],
@@ -495,7 +500,9 @@ const AV = (function () {
       { q:'Check-in and check-out times?', a:'Check-in from 3:00 pm, check-out by 10:30 am. Flexible times on request — just let us know.' },
       { q:'Are pets allowed?', a:'We are sorry, but pets are not allowed in the home.' },
       { q:'How many guests can stay?', a:'The home sleeps 3, with a double bedroom and an additional bed.' },
-      { q:'Is there parking and Wi-Fi?', a:'Free street parking nearby in the town centre, and free Wi-Fi throughout the home.' },
+      { q:'How far is the sea?', a:'The Adriatic (Campo di Mare, Torre San Gennaro) is about 13 minutes by car; the white Ionian beaches (Porto Cesareo) about 35 minutes.' },
+      { q:'How far is Carrisiland water park?', a:'Carrisiland, the water and theme park in Cellino San Marco, is just 5 minutes away by car — one of the closest places to stay, ideal for a family day at the park.' },
+      { q:'Is there air conditioning, Wi-Fi and parking?', a:'Yes: air conditioning, free Wi-Fi throughout the home, and free street parking nearby in the town centre.' },
       { q:'How do I get there?', a:'Just 5 minutes from San Pietro Vernotico station and easy by car. We send detailed directions after booking.' },
       { q:'How can I book?', a:'The fastest way is WhatsApp or a phone call. We confirm availability and dates right away.' }
     ]
