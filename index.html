@@ -201,6 +201,13 @@
   .av-langbtn{appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;padding:8px 6px;font:inherit;letter-spacing:.10em;line-height:1;cursor:pointer;display:inline-flex;align-items:center;min-height:40px}
   .av-faq-q{appearance:none;-webkit-appearance:none;background:none;border:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;cursor:pointer;text-align:left;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;color:#2A2417}
   .av-faq-plus{font-size:22px;color:#6E6132;line-height:1;transition:transform .3s ease}
+  /* === Barra contatti rapidi (solo mobile) === */
+  #av-quickbar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;grid-template-columns:1fr 1.2fr 1fr;gap:8px;background:rgba(42,36,23,.97);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid rgba(245,238,224,.16);padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));transform:translateY(0);transition:transform .38s ease}
+  #av-quickbar.av-qb-hide{transform:translateY(110%)}
+  #av-quickbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#F5EEE0;border:1px solid rgba(245,238,224,.32);border-radius:2px;padding:10px 4px}
+  #av-quickbar a.av-qb-wa{background:#6E6132;border-color:#6E6132;font-weight:500}
+  @media(max-width:880px){#av-quickbar{display:grid}}
+  @media(prefers-reduced-motion:reduce){#av-quickbar{transition:none}}
 </style>
 <noscript><style>#av-intro{display:none!important}</style></noscript>
 </head>
@@ -443,6 +450,26 @@
   </footer>
 
 </div>
+
+<nav id="av-quickbar" aria-label="Contatti rapidi">
+  <a href="tel:+393280522050"><span data-i18n="reachCall">Chiama</span></a>
+  <a class="av-qb-wa" href="https://wa.me/393280522050" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="mailto:prenotazioni@laltravolta.it">Email</a>
+</nav>
+<script>
+(function(){
+  var bar = document.getElementById('av-quickbar');
+  var foot = document.getElementById('contatti');
+  if(!bar || !foot) return;
+  function check(){
+    var r = foot.getBoundingClientRect();
+    bar.classList.toggle('av-qb-hide', r.top < window.innerHeight - 40);
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  window.addEventListener('resize', check);
+  check();
+})();
+</script>
 
 <script>
 /* L'altra Volta — sito statico. Logica i18n + FAQ in vanilla JS
